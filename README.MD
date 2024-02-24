@@ -1,68 +1,35 @@
-# TP2
+# Music Web Application
 
-Le but de ce travail pratique est de vous familiariser avec le langage **JavaScript** et la manipulation du **DOM**. Plus particulièrement, vous allez rendre le site web développé au TP1 dynamique. La liste des playlists et chansons dans la bibliothèque ainsi que la page d'information d'une playlist spécifique seront maintenant construites à travers du code JS. Chaque page de playlist sera remplie avec les chansons spécifiques de la playlist choisie. Le formulaire de création d'une playlist permettra de générer une nouvelle playliste ou en modifier une déjà existante. Vous pourrez aussi continuer à vous familiariser avec l’exécution de test de bout en bout avec la librairie Nightwatch.
+Welcome to the repository for our music web application, designed to provide a seamless and interactive user experience for exploring and managing music playlists and tracks.
 
-## Installation des librairies nécessaires
+## Overview
 
-Pour pouvoir les librairies nécessaires pour le TP, vous aurez besoin de l'environnement d'exécution NodeJS et le gestionnaire de paquet npm. Vous pouvez les installer sur votre machine à partir du [lien suivant](https://nodejs.org/en/download/). On vous recommande d'installer la version _LTS_.
+This web application allows users to browse their music library, create custom playlists, and discover new music. With a focus on a clean and responsive design, it ensures a great experience across all devices.
 
-Pour installer les dépendances nécessaires, lancez la commande `npm ci` dans le répertoire `site-web`. Ceci installera toutes les librairies définies dans le fichier `package.json`. Vous pouvez par la suite utiliser les libraires de test et les scripts définis dans le même fichier.
+## Features
 
-## Nightwatch sur Windows, Linux et macOS.
+- **Browse Music Library**: Access a vast collection of songs sorted by genre, artist, and mood.
+- **Create Playlists**: Compile your favorite tracks into custom playlists.
+- **Responsive Design**: Enjoy our app on any device, thanks to a mobile-first approach.
+- **Interactive UI**: Engage with dynamic elements for a smooth user experience.
+- **Audio Playback**: Stream music directly within the app with our built-in audio player.
 
-Pour faire fonctionner les tests Nightwatch sur Linux, vous devez simplement changer le "server_path" du "webdriver" à la ligne 11 du fichier nightwatch.json. Normalement, le path du chromedriver sur Linux devrait être: `node_modules/.bin/chromedriver`. Pour MacOs, il faut changer le même path pour: `node_modules/chromedriver/lib/chromedriver/chromedriver`. Pour le Windows, le path est `node_modules/chromedriver/lib/chromedriver/chromedriver.exe`.
+## Technologies Used
 
-La version du module `chromedriver` doit correspondre à la version de Chrome de votre machine. Par défaut, la version est **105**. Vous devez mettre à jour votre version de Chrome si elle n'est pas à jour avec **105** ou modifier la version dans `package.json` et relancer `npm install` si votre version de Chrome est supérieure à **105**.
+- HTML
+- CSS
+  - Pre-processor: [SASS/SCSS, LESS (if applicable)]
+- JavaScript
+  - Frameworks/Libraries: [React, Vue, Angular, etc. (if any)]
+- [Other technologies/frameworks/libraries]
 
-## Exécution des tests
+## Setup and Installation
 
-Vous pouvez exécuter les tests automatisés avec la commande `npm run e2e`. Ceci exécutera les tests et produire un rapport dans votre terminal.
+To get a local copy up and running, follow these simple steps:
 
-**Note** : comme le travail utilise les modules ES (**ESM**), les tests automatisés doivent être exécutés sur des pages Web servies par un vrai serveur HTTP. Vous devez avoir un serveur actif avant de pouvoir exécuter vos tests. Lancez votre déploiement local dans un autre terminal avant d'exécuter vos tests.
-
-## Déploiement local
-
-Vous pouvez faire un déploiement local de votre site avec l'outil `lite-server`. Si vous lancez la commande `npm start` dans la racine du projet, un serveur HTTP statique sera déployé sur votre machine et votre site sera accessible sur l'adresse `localhost:5000` ou `<votre-adresse-IP>:5000`. La sortie dans le terminal vous donnera l'adresse exacte d'accès.
-
-## Liste de chansons
-
-Les fichiers des chansons initiales sont disponibles dans le répertoire `assets/media`. Les chansons sont libres de droits et obtenues du site [pixabay](https://pixabay.com/music/). Vous pouvez ajouter des chansons supplémentaires à votre remise si vous voulez en vous assurant de mettre à jour l'information des chansons dans le fichier `songs.js` dans le répertoire `assets/js`.
-
-# Correction
-
-- player:
-    - getSongFromIndex:
-        - Ne traite pas les index négatifs, -0.5
-
-- playlist:
-    - loadSongs:
-        - devrait filtrer les chansons initialement selon l'id
-    - bindEvents:
-        - ligne 222, ne devrait pas avoir de paramètre
-
-- Qualité et clarté du code:
-    - player:
-        - playPreviousSong:
-            - Lignes 73 & 76 (ibid. pour playNextSong)
-            - Logique booléenne lignes 71 & 74 (ibid. pour playNextSong)
-    - playlist_editor:
-        - variable globale COUNT
-        - createPlaylist:
-            - generateRandomID(2)
-    - playlist:
-        - playAudio
-            - -1 ligne 88
-        - audioSeek:
-            - Double parenthèses ligne 157
-        
-
-| **Exigences**                                     | **Note** | **Points** |
-| ------------------------------------------------- | :------: | :--------: |
-| Code dans _storageManager.js_                     |    2     |     2      |
-| Code dans _library.js_                            |    3     |     3      |
-| Code dans _playlist.js_                           |    3.5     |     4      |
-| Code dans _player.js_                             |    2.5     |     3      |
-| Code dans _create\_playlist.js_                   |    4     |     4      |
-| Structure du code                                 |    2     |     2      |
-| Qualité et clarté du code                         |    0.5     |     2      |
-| **Total**                                         | **17.5**    |   **20**   |
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/music-web-app.git
+   cd music-web-app
+   npm install
+   npm start
