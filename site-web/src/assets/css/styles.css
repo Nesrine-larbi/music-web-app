@@ -1,0 +1,333 @@
+:root {
+    --player-color: #ff1493; /* Deep pink */
+    --active-color: #c71585; /* Medium violet red */
+    --text-color: #000000; /* Black for contrast */
+    --highlight: #ffb6c1; /* Light pink */
+    --selected-page: #f8bfd1; /* Soft pink */
+    --hover-playlist: #d88c9c; /* Light goldenrod yellow */
+}
+body {
+    /* Define the gradient for the background */
+    background: linear-gradient(to bottom, #ff8a8a 0%, #e8638b 100%);
+    
+}
+
+
+.playlist-item:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* A slightly more pronounced shadow on hover */
+}
+
+/* Additional CSS for elements follows... */
+
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+#container {
+    display: grid;
+    grid-template-areas: "nav-bar main-area"
+        "playing-bar playing-bar";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr auto;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0 0 0 0;
+}
+
+#nav-bar {
+    grid-area: nav-bar;
+    height: 100%;
+    background-color: var(--main-color);
+}
+
+#main-area {
+    grid-area: main-area;
+    padding: 0 10px;
+    overflow-y: auto;
+}
+
+#playing-bar {
+    grid-area: playing-bar;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid var(--main-color);
+}
+
+#nav-bar ul {
+    margin-right: 5px;
+    padding-left: 10px;
+    list-style: none;
+}
+
+#search-bar {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+ul li {
+    padding: 8px;
+}
+
+#nav-bar ul li {
+    padding: 20px 5px 20px 5px;
+}
+
+li a {
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.0);
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: white;
+}
+
+li a:hover,
+.active-page {
+    text-decoration: none; 
+    background-color: var(--selected-page);
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.align-center {
+    align-items: center;
+}
+
+#creators {
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+#controls {
+    align-items: center;
+    flex: 0.8;
+}
+
+#timeline-container {
+    justify-content: space-between;
+    width: 100%;
+}
+
+#timeline {
+    accent-color: var(--player-color);
+    flex: 1
+}
+
+.control-btn {
+    border: none;
+}
+
+.control-btn:hover {
+    font-size: 35px;
+    color: var(--player-color);
+}
+
+.control-btn-toggled {
+    color: var(--active-color);
+}
+
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.playlist-item {
+    box-shadow: 0 4px 8px rgba(118, 12, 188, 0.086); /* This adds a subtle shadow to each item */
+    border-radius: 30px; /* This makes the corners of the cards rounded */
+    padding: 20px;
+    margin: 10px 0;
+    transition: box-shadow 0.3s ease-in-out;
+    align-items: center;
+    justify-content: baseline;
+    text-decoration: none;
+    color: black;
+}
+
+.playlist-preview {
+    position: relative;
+}
+
+.playlist-play-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 0px
+}
+
+.playlist-item * {
+    margin: 1px;
+}
+
+.playlist-item p {
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 180px;
+}
+
+.playlist-item p:first-of-type {
+    font-size: large;
+    color: var(--main-color);
+}
+
+.playlist-item img {
+    border-radius: 10%;
+    width: 150px;
+    height: 150px;
+}
+
+.song-item {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    margin-bottom: 2px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid var(--main-color);
+    border-radius: 5px;
+}
+
+
+.song-item>p {
+    flex: 0.25;
+}
+
+.song-item:hover {
+    border: 2px solid var(--active-color);
+    cursor: pointer;
+}
+
+.song-item button {
+    border: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.playlist-item:hover .hidden {
+    visibility: visible;
+}
+
+#playlist-header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+#playlist-form {
+    width: 60%;
+}
+
+.form-control {
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.form-group label {
+    margin: 5px;
+    font-weight: bold;
+}
+
+#add-song-btn {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#song-list div {
+    margin: 5px;
+}
+
+#search-form {
+    width: 50%;
+    justify-content: space-around;
+}
+
+#search-input {
+    padding: 10px;
+    border: 2px solid #ff7eb3;
+    flex: 1;
+    margin-right: 5px;
+    border-radius: 30px;
+
+}
+#image-preview {
+    border: 2px solid var(--main-color);
+}
+
+@media only screen and (max-device-width: 600px),
+only screen and (max-width: 800px) {
+    .playlist-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+button {
+    background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+.button-style {
+    width: 150px; /* Example fixed width */
+    height: 30px; /* Example fixed height */
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    text-align: center;
+    display: inline-flex; /* Aligns content and allows for flexbox properties */
+    background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+    color: rgb(26, 25, 26);
+    border: none;
+    padding: 10px 15px; /* Adjust padding as needed but maintain for text buttons */
+    border-radius: 5px; /* Rounded corners for aesthetic */
+    font-size: px; /* Adjust based on your design */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+#songs-list{
+    background-color:  rgba(255, 209, 232, 0.218);; /* A slightly darker pink for contrast */
+    color: #333; /* A dark gray for the text to be more readable */
+    font-size: 1.5em;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px; /* Less space for a tighter layout */
+    border-radius: 20px; /* Softer rounded corners */
+}
+
+
+
+
